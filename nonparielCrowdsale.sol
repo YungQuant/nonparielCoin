@@ -253,13 +253,12 @@ contract Crowdsale {
   event TokenPurchase(address indexed purchaser, address indexed beneficiary, uint256 value, uint256 amount);
 
 
-  function Crowdsale(address _token, uint256 _rate, address _wallet) {
-    require(_rate > 0);
-    require(_wallet != 0x0);
-
-    token = tokenInterface(_token);
-    rate = _rate;
-    wallet = _wallet;
+  function Crowdsale() {
+    uint256 one = 1;
+    uint256 divFactor = 500000000000000000;
+    token = tokenInterface(0x14c965530371f033CFfb456f83b40e0e81C7B439);
+    rate = one.div(divFactor);
+    wallet = 0x99F33480A4f1E8C4f922Da9957391f87D9969786;
   }
 
   // fallback function can be used to buy tokens
