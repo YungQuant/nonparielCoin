@@ -49,7 +49,7 @@ contract Sale {
         require(msg.value>0);
         uint256 amount = msg.value / exchangeRate;
         ETHWallet.transfer(msg.value);
-        Token.mintToken(msg.sender, amount);
+        Token.mint(msg.sender, amount);
         Contribution(msg.sender, amount);
     }
 
