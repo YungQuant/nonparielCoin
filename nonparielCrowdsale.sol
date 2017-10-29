@@ -230,10 +230,6 @@ contract Crowdsale {
   // The token being sold
   tokenInterface public token;
 
-  // start and end timestamps where investments are allowed (both inclusive)
-  uint256 public startTime;
-  uint256 public endTime;
-
   // address where funds are collected
   address public wallet;
 
