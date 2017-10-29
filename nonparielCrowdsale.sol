@@ -11,7 +11,6 @@ contract ERC20 {
 
 contract Sale {
 
-    uint256 public totalMinted;
     uint public exchangeRate;
     bool public isFunding;
     ERC20 public Token;
@@ -48,8 +47,6 @@ contract Sale {
         require(msg.value>0);
         require(isFunding);
         uint256 amount = msg.value / exchangeRate;
-        uint256 total = totalMinted + amount;
-        totalMinted += total;
         ETHWallet.transfer(msg.value);
         Token.mintToken(msg.sender, amount);
         Contribution(msg.sender, amount);
