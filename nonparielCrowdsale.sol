@@ -11,13 +11,11 @@ contract ERC20 {
 
 contract Sale {
 
-    uint256 public maxMintable;
     uint256 public totalMinted;
     uint public exchangeRate;
     bool public isFunding;
     ERC20 public Token;
     address public ETHWallet;
-    uint256 public heldTotal;
 
     bool private configSet;
     address public creator;
@@ -26,19 +24,16 @@ contract Sale {
     mapping (address => uint) public heldTimeline;
 
     event Contribution(address from, uint256 amount);
-    event ReleaseTokens(address from, uint256 amount);
 
     function Sale() {
-        maxMintable = 4000000000000000000000000; // 3 million max sellable (18 decimals)
         ETHWallet =  0x99F33480A4f1E8C4f922Da9957391f87D9969786;
         isFunding = true;
         creator = msg.sender;
-        exchangeRate = 600;
+        exchangeRate = 0.5 ether;
     }
 
     // setup function to be ran only 1 time
     // setup token address
-    // setup end Block number
     function setup(address TOKEN) {
         require(!configSet);
         Token = ERC20(TOKEN);
@@ -52,12 +47,11 @@ contract Sale {
 
     // CONTRIBUTE FUNCTION
     // converts ETH to TOKEN and sends new TOKEN to the sender
-    function contribute() external payable {
+    function () external payable {
         require(msg.value>0);
         require(isFunding);
-        uint256 amount = msg.value * exchangeRate;
+        uint256 amount = msg.value / exchangeRate;
         uint256 total = totalMinted + amount;
-        require(total<=maxMintable);
         totalMinted += total;
         ETHWallet.transfer(msg.value);
         Token.mintToken(msg.sender, amount);
