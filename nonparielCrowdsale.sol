@@ -5,7 +5,7 @@ contract ERC20 {
   function balanceOf(address who) constant returns (uint);
   function transfer(address to, uint value) returns (bool ok);
   function transferFrom(address from, address to, uint value) returns (bool ok);
-  function mintToken(address to, uint256 value) returns (uint256);
+  function mint(address to, uint256 value) returns (uint256);
 }
 
 
