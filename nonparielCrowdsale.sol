@@ -1,4 +1,4 @@
-pragma solidity 0.4.18;
+pragma solidity 0.4.17;
 
 contract ERC20 {
   uint public totalSupply;
@@ -19,9 +19,6 @@ contract Sale {
 
     bool private configSet;
     address public creator;
-
-    mapping (address => uint256) public heldTokens;
-    mapping (address => uint) public heldTimeline;
 
     event Contribution(address from, uint256 amount);
 
