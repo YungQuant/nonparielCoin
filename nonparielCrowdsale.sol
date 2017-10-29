@@ -30,7 +30,7 @@ contract Sale {
 
     // setup function to be ran only 1 time
     // setup token address
-    function setup(address TOKEN) {
+    function setup(address TOKEN) external {
         require(!configSet);
         Token = ERC20(TOKEN);
         configSet = true;
