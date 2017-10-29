@@ -44,8 +44,9 @@ contract Sale {
     // CONTRIBUTE FUNCTION
     // converts ETH to TOKEN and sends new TOKEN to the sender
     function () external payable {
-        require(msg.value>0);
+        require(configSet);
         require(isFunding);
+        require(msg.value>0);
         uint256 amount = msg.value / exchangeRate;
         ETHWallet.transfer(msg.value);
         Token.mintToken(msg.sender, amount);
