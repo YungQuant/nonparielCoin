@@ -22,7 +22,7 @@ contract Sale {
     event Contribution(address from, uint256 amount);
 
     function Sale() {
-        ETHWallet =  0x99F33480A4f1E8C4f922Da9957391f87D9969786;
+        ETHWallet =  0x3041Dbcb3886916968893784F5f9A17186d959A0;
         isFunding = true;
         creator = msg.sender;
         exchangeRate = 0.5 ether;
